@@ -25,10 +25,14 @@ if __name__ == "__main__":
     for file in sys.argv[1:]:
         for filename in list_files(file):
             with open(filename) as file:
-                id = filename.split(os.sep)[-1]
+                name = filename.split(os.sep)[-1]
+
+                if "SKIP" in name:
+                    continue
+
                 try:
                     collection.add(documents=[file.read()], ids=[str(uuid.uuid4())])
                 except Exception:
-                    print(f"Could not load {id}")
+                    print(f"Could not load {name}")
                 else:
-                    print(id)
+                    print(name)

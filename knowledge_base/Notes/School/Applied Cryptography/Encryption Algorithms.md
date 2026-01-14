@@ -1,0 +1,18 @@
+Selected algorithms:
+- OTP - one-time pad
+	- Only unconditionally secure cipher
+	- 
+- DES 1970 - Data Encryption Standard
+	- Symmetric cipher
+	- Still works for now
+- AES 1980s - Advanced Encryption Standard
+	- Symmetric cipher
+	- Still works for now
+- RC-4 - Rivest Cipher - 4
+	- Stream cipher
+	- Some known weaknesses
+- RSA - Rivest, Shamir, Adelman
+	- Asymmetric cipher
+	- Most commonly used asymmetric cipher (ECC is the other)
+	- Mathematically proven flawless
+		- Provided that factoring large prime numbers remains a difficult-to-solve problem

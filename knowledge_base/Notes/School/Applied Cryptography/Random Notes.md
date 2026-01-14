@@ -1,0 +1,1 @@
+Hashes and encryption are not guaranteed to provide the requirements we need for cryptography, but so far they have done so

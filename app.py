@@ -17,6 +17,7 @@ app = FastAPI()
 chroma = chromadb.PersistentClient(path="./db")
 collection = chroma.get_or_create_collection("docs")
 MODEL_NAME = os.environ.get("MODEL_NAME", "tinyllama")
+USE_MOCK = os.environ.get("USE_MOCK_LLM", "0") == "1"
 
 logger.info(f"Using model {MODEL_NAME}")
 
@@ -31,16 +32,19 @@ def query(q: str):
     results = collection.query(query_texts=[q], n_results=1)
     context = results["documents"][0][0] if len(results["documents"][0]) > 0 else ""
 
-    answer = ollama.generate(
-        model=MODEL_NAME,
-        prompt=f"Context:\n{context}\n\nQuestion: {q}\n\nAnswer clearly and concisely:",
-    )
+    if USE_MOCK:
+        return {"answer": context}
+    else:
+        answer = ollama.generate(
+            model=MODEL_NAME,
+            prompt=f"Context:\n{context}\n\nQuestion: {q}\n\nAnswer clearly and concisely:",
+        )
 
-    logger.info(
-        f"Query executed against model:\n\tQuery: {q}\n\tResponse: {answer['response']}"
-    )
+        logger.info(
+            f"Query executed against model:\n\tQuery: {q}\n\tResponse: {answer['response']}"
+        )
 
-    return {"answer": answer["response"]}
+        return {"answer": answer["response"]}
 
 
 @app.post("/add")

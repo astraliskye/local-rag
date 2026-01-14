@@ -1,0 +1,3 @@
+Attacker precomputes hashes for a large number of passwords for a given [[Hash Functions|hash function]] and saves them. When user data is leaked, the attacker takes each password hash in the leaked data and looks for the associated password in their precomputed dictionary. Looking up passwords this way is quite fast, but it requires a ton of storage
+
+Is passwords are salted, the attacker must compute a new dictionary for each different salt
