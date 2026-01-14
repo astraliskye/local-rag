@@ -22,8 +22,8 @@ if __name__ == "__main__":
     client = chromadb.PersistentClient(path="./db")
     collection = client.get_or_create_collection("docs")
 
-    for file in sys.argv[1:]:
-        for filename in list_files(file):
+    for arg in sys.argv[1:]:
+        for filename in list_files(arg):
             with open(filename) as file:
                 name = filename.split(os.sep)[-1]
 
