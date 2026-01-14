@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: local-rag-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: local-rag
+  template:
+    metadata:
+      labels:
+        app: local-rag
+    spec:
+      containers:
+        - name: local-rag-container
+          image: local-rag
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MODEL_NAME
+              value: tinyllama
+        - name: ollama-container
+          image: ollama/ollama
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 11434
+          lifecycle:
+            postStart:
+              exec:
+                command: ["ollama", "pull", "tinyllama"]

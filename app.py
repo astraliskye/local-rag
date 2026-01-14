@@ -21,10 +21,15 @@ MODEL_NAME = os.environ.get("MODEL_NAME", "tinyllama")
 logger.info(f"Using model {MODEL_NAME}")
 
 
+@app.get("/")
+def default():
+    return {"message": "Hello world!"}
+
+
 @app.get("/query")
 def query(q: str):
     results = collection.query(query_texts=[q], n_results=1)
-    context = results["documents"][0][0] if results["documents"] else ""
+    context = results["documents"][0][0] if len(results["documents"][0]) > 0 else ""
 
     answer = ollama.generate(
         model=MODEL_NAME,
