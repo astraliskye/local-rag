@@ -19,7 +19,7 @@ jobs:
         run: |
           pip install fastapi uvicorn chromadb requests
       - name: Rebuild embeddings
-        run: python embed.py kowledge_base
+        run: python embed.py knowledge_base
       - name: Start API in mock mode
         run: |
           USE_MOCK_LLM=1 fastapi run app.py --port 8000
