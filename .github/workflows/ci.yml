@@ -17,7 +17,7 @@ jobs:
           python-version: '3.13'
       - name: Install dependencies
         run: |
-          pip install fastapi uvicorn chromadb requests
+          pip install fastapi uvicorn chromadb ollama requests
       - name: Rebuild embeddings
         run: python embed.py knowledge_base
       - name: Start API in mock mode
