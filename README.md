@@ -154,6 +154,8 @@ This will embed every page of your vault (including stylesheets and other miscel
 ## Roadmap
 
 - [x] Documentation: README written (embed.py, Obsidian usage, API endpoints)
+- [ ] DX: One-command local setup (scripted install, sensible defaults)
+- [ ] Quality: Add evaluation harness with baseline retrieval/answer metrics
 - [ ] Testing: Add unit testing with pytest
 - [ ] Testing: Improve API test strategy and cover more endpoints
 - [ ] Tooling: Add argparse usage instructions to embed.py
