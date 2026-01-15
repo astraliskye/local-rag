@@ -36,7 +36,7 @@ Note: if you are not using tinyllama you should change the MODEL_NAME environmen
 
 ```shell
 docker build -t local-rag .
-docker run --name local-rag -e MODEL_NAME=tinyllama -p 8000:8000
+docker run --name local-rag -e MODEL_NAME=tinyllama -p 8000:8000 local-rag
 ```
 
 ### Containerless
@@ -89,7 +89,7 @@ The application has a built-in endpoint for adding embeddings to the database. Y
 
 ```JSON
 {
-  "contents": "Some content to be embedded"
+  "content": "Some content to be embedded"
 }
 ```
 
@@ -102,7 +102,7 @@ If successful, you will receive a HTTP 200 response.
 Query the model. Use URL parameter `q` to define the desired query:
 
 ```URL
-curl http://<server IP>:8000?q=Some query
+curl http://<server IP>:8000/query?q=Some query
 ```
 
 ### `/add`
@@ -111,7 +111,7 @@ Embed more data into the model. Provide the content to be embedded in the conten
 
 ```JSON
 {
-  "contents": "Some content to be embedded"
+  "content": "Some content to be embedded"
 }
 ```
 
@@ -153,9 +153,9 @@ This will embed every page of your vault (including stylesheets and other miscel
 
 ## Roadmap
 
-- [ ] Write README.md
+- [x] Write README.md
   - [x] Explanation of embed.py
-  - [ ] Directions for incorporating Obsidian specifically
+  - [x] Directions for incorporating Obsidian specifically
   - [x] Description of API endpoints
 - [ ] Add unit testing with pytest
 - [ ] Come up with better solution for API testing and test more endpoints
