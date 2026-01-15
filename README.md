@@ -21,7 +21,7 @@ Prerequisites: Docker!
 
 Pull Docker image from the registry and run it
 
-Note: if you are not using tinyllama you should change the MODEL_NAME environment variable to reflect the name of your chosen model. OLLAMA_HOST defaults to http://127.0.0.1:11434.
+Note: if you are not using tinyllama you should change the MODEL_NAME environment variable to reflect the name of your chosen model. OLLAMA_HOST defaults to `http://127.0.0.1:11434`.
 
 ```shell
 docker pull astraliskye/local-rag
