@@ -21,11 +21,11 @@ Prerequisites: Docker!
 
 Pull Docker image from the registry and run it
 
-Note: if you are not using tinyllama you should change the MODEL_NAME environment variable to reflect the name of your chosen model
+Note: if you are not using tinyllama you should change the MODEL_NAME environment variable to reflect the name of your chosen model. OLLAMA_HOST defaults to http://127.0.0.1:11434.
 
 ```shell
 docker pull astraliskye/local-rag
-docker run --name local-rag -e MODEL_NAME=tinyllama -p 8000:8000 astraliskye/local-rag
+docker run --rm --name local-rag --net <same network as ollama> -e MODEL_NAME=tinyllama -e OLLAMA_HOST=http://<ollama container hostname or localhost>:11434 -p 8000:8000 astraliskye/local-rag
 ```
 
 #### Build image and run it
@@ -36,7 +36,7 @@ Note: if you are not using tinyllama you should change the MODEL_NAME environmen
 
 ```shell
 docker build -t local-rag .
-docker run --name local-rag -e MODEL_NAME=tinyllama -p 8000:8000 local-rag
+docker run --rm --name local-rag --net <same network as ollama> -e MODEL_NAME=tinyllama -e OLLAMA_HOST=http://<ollama container hostname or localhost>:11434 -p 8000:8000 local-rag
 ```
 
 ### Containerless
@@ -64,8 +64,8 @@ Run the API:
 Note: if you are not using tinyllama you should change the MODEL_NAME environment variable to reflect the name of your chosen model
 
 ```shell
-MODEL_NAME=tinyllama uvicorn app:app --port 8000    # Run uvicorn directly
-MODEL_NAME=tinyllama fastapi run app.py --port 8000 # Run via fastapi
+MODEL_NAME=tinyllama OLLAMA_HOST=http://127.0.0.1:11434 uvicorn app:app --port 8000    # Run uvicorn directly
+MODEL_NAME=tinyllama OLLAMA_HOST=http://127.0.0.1:11434 fastapi run app.py --port 8000 # Run via fastapi
 ```
 
 ## Adding context to LLM generation
@@ -153,10 +153,13 @@ This will embed every page of your vault (including stylesheets and other miscel
 
 ## Roadmap
 
-- [x] Write README.md
-  - [x] Explanation of embed.py
-  - [x] Directions for incorporating Obsidian specifically
-  - [x] Description of API endpoints
-- [ ] Add unit testing with pytest
-- [ ] Come up with better solution for API testing and test more endpoints
-- [ ] Add argparse usage instructions to embed.py
+- [x] Documentation: README written (embed.py, Obsidian usage, API endpoints)
+- [ ] Testing: Add unit testing with pytest
+- [ ] Testing: Improve API test strategy and cover more endpoints
+- [ ] Tooling: Add argparse usage instructions to embed.py
+- [ ] CI/CD: Add lint/test/build pipeline with artifact publishing
+- [ ] Observability: Structured logging, tracing, and basic dashboards
+- [ ] Security: Dependency scanning, authn, rate limiting, and secrets handling
+- [ ] API: Publish OpenAPI spec with versioning and compatibility notes
+- [ ] Performance: Load testing and latency/throughput benchmarks
+- [ ] Deployment: Health checks, readiness probes, and Helm/K8s docs
