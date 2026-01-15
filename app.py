@@ -5,6 +5,8 @@ import chromadb
 import ollama
 import uuid
 
+from pydantic import BaseModel
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -20,6 +22,10 @@ MODEL_NAME = os.environ.get("MODEL_NAME", "tinyllama")
 USE_MOCK = os.environ.get("USE_MOCK_LLM", "0") == "1"
 
 logger.info(f"Using model {MODEL_NAME}")
+
+
+class Update(BaseModel):
+    content: str
 
 
 @app.get("/")
@@ -48,10 +54,12 @@ def query(q: str):
 
 
 @app.post("/add")
-def add(text: str):
+def add(update: Update):
     id = str(uuid.uuid4())
-    collection.add(ids=[id], documents=[text])
-    logger.info(f"Content added to knowledge base:\n\tID: {id}\n\tContent: {text}")
+    collection.add(ids=[id], documents=[update.content])
+    logger.info(
+        f"Content added to knowledge base:\n\tID: {id}\n\tContent: {update.content}"
+    )
     return {"status": "all good"}
 
 
