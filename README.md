@@ -153,15 +153,11 @@ This will embed every page of your vault (including stylesheets and other miscel
 
 ## Roadmap
 
-- [x] Documentation: README written (embed.py, Obsidian usage, API endpoints)
-- [ ] DX: One-command local setup (scripted install, sensible defaults)
-- [ ] Quality: Add evaluation harness with baseline retrieval/answer metrics
-- [ ] Testing: Add unit testing with pytest
-- [ ] Testing: Improve API test strategy and cover more endpoints
-- [ ] Tooling: Add argparse usage instructions to embed.py
-- [ ] CI/CD: Add lint/test/build pipeline with artifact publishing
-- [ ] Observability: Structured logging, tracing, and basic dashboards
-- [ ] Security: Dependency scanning, authn, rate limiting, and secrets handling
-- [ ] API: Publish OpenAPI spec with versioning and compatibility notes
-- [ ] Performance: Load testing and latency/throughput benchmarks
-- [ ] Deployment: Health checks, readiness probes, and Helm/K8s docs
+- [ ] RAG Quality: Chunking + metadata, hybrid retrieval + reranking, answers with citations/confidence
+- [ ] Evaluation: Golden dataset, retrieval/answer metrics, simple report (JSON/HTML)
+- [ ] Production API: API keys, rate limiting, structured logs, tracing, and metrics
+- [ ] Testing: Unit, integration, and API smoke tests
+- [ ] CI/CD: Lint, test, build, and publish pipeline
+- [ ] DX/Deployment: One-command local setup and docker-compose dev stack
+- [ ] Security: Authn/z, secrets handling, dependency scanning
+- [ ] Performance: Load testing, latency targets, and benchmarks
