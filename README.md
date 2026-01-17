@@ -153,11 +153,31 @@ This will embed every page of your vault (including stylesheets and other miscel
 
 ## Roadmap
 
-- [ ] RAG Quality: Chunking + metadata, hybrid retrieval + reranking, answers with citations/confidence
-- [ ] Evaluation: Golden dataset, retrieval/answer metrics, simple report (JSON/HTML)
-- [ ] Production API: API keys, rate limiting, structured logs, tracing, and metrics
-- [ ] Testing: Unit, integration, and API smoke tests
-- [ ] CI/CD: Lint, test, build, and publish pipeline
-- [ ] DX/Deployment: One-command local setup and docker-compose dev stack
-- [ ] Security: Authn/z, secrets handling, dependency scanning
-- [ ] Performance: Load testing, latency targets, and benchmarks
+- [ ] DX/Deployment: One-command local setup
+- [ ] DX/Deployment: Docker Compose dev stack
+- [ ] Testing: API smoke tests
+- [ ] Testing: Unit tests for core utilities
+- [ ] Testing: Integration tests for retrieval + API flows
+- [ ] CI/CD: Lint + format checks
+- [ ] CI/CD: Test pipeline
+- [ ] CI/CD: Build container images
+- [ ] CI/CD: Publish pipeline
+- [ ] Evaluation: Golden dataset
+- [ ] Evaluation: Retrieval metrics
+- [ ] Evaluation: Answer quality metrics
+- [ ] Evaluation: Simple report (JSON/HTML)
+- [ ] RAG Quality: Chunking strategy improvements
+- [ ] RAG Quality: Rich metadata extraction
+- [ ] RAG Quality: Hybrid retrieval
+- [ ] RAG Quality: Reranking
+- [ ] RAG Quality: Answers with citations + confidence
+- [ ] Production API: API keys
+- [ ] Production API: Rate limiting
+- [ ] Production API: Structured logs
+- [ ] Production API: Tracing + metrics
+- [ ] Security: Authn/z
+- [ ] Security: Secrets handling
+- [ ] Security: Dependency scanning
+- [ ] Performance: Latency targets
+- [ ] Performance: Benchmarks
+- [ ] Performance: Load testing
